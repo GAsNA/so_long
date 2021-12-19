@@ -10,7 +10,10 @@ MINILIBX_PATH	=
 MINILIBX	=
 
 SRCS_PATH	=	./srcs/
-SRCS		=
+SRCS		=	${SRCS_PATH}main_test.c	\
+			${SRCS_PATH}errors.c	\
+			${SRCS_PATH}map.c	\
+			${SRCS_PATH}valid_map.c
 
 OBJS		=	${SRCS:.c=.o}
 
@@ -28,8 +31,8 @@ MLXFLAGS	=	-L. -lXext -L. -lX11
 
 all:			${NAME}
 
-${NAME}:		${OBJS} ${LIBFT} ${MINILIBX}
-			${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} -o ${NAME}
+${NAME}:		${OBJS} ${LIBFT} #${MINILIBX}
+			${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o ${NAME} #${MINILIBX} ${MLXFLAGS}
 
 .c.o:
 			${CC} -c ${CFLAGS} -I${HEADER} $^ -o $@
@@ -42,7 +45,7 @@ ${MINILIBX}:
 
 clean:
 			make -C ${LIBFT_PATH} clean
-			make -C ${MINILIBX_PATH} clean
+			#make -C ${MINILIBX_PATH} clean
 			${RM} ${OBJS}
 
 fclean:			clean
