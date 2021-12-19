@@ -18,5 +18,6 @@ char	**ft_get_map(char *path);
 /* errors.c */
 int	ft_put_error_path();
 int	ft_put_error_map();
+int	ft_put_error_extension();
 
 #endif

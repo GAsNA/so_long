@@ -14,6 +14,16 @@ static int	length_map(char *path)
 	return (size + 1);
 }
 
+static int	check_extension(char *path)
+{
+	int	i;
+
+	i = ft_strlen(path) - 4;
+	if (ft_strncmp(&path[i], ".ber", 4) == 0)
+		return (1);
+	return (0);
+}
+
 char	**ft_get_map(char *path)
 {
 	char	*map;
@@ -21,6 +31,11 @@ char	**ft_get_map(char *path)
 	int	fd;
 	char	bf;
 
+	if (!check_extension(path))
+	{
+		ft_put_error_extension();
+		return (0);
+	}
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
