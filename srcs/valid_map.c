@@ -61,7 +61,27 @@ static int	is_rectangular(char **map)
 	return (1);
 }
 
-static int	has_exit(char **map)
+static int	has_good_elems(char **map)
+{
+	int	i;
+	int	line;
+
+	line = -1;
+	while (map[++line])
+	{
+		i = -1;
+		while (map[line][++i])
+		{
+			if (map[line][i] != 'E' && map[line][i] != 'C'
+				&& map[line][i] != 'P' && map[line][i] != '0'
+				&& map[line][i] != '1')
+				return (0);
+		}
+	}
+	return (1);
+}
+
+/*static int	has_exit(char **map)
 {
 	int	i;
 	int	line;
@@ -113,13 +133,33 @@ static int	has_spawn(char **map)
 		}
 	}
 	return (0);
+}*/
+
+static int	has_elem(char **map, char c)
+{
+	int	i;
+	int	line;
+
+	line = -1;
+	while (map[++line])
+	{
+		i = -1;
+		while (map[line][++i])
+		{
+			if (map[line][i] == c)
+				return (1);
+		}
+	}
+	return (0);
 }
 
 int	ft_is_valid_map(char **map)
 {
+	if (!map)
+		return (0);
 	if (!is_closed(map) || !is_rectangular(map)
-		|| !has_exit(map) || !has_collectible(map)
-		|| !has_spawn(map))
+		|| !has_good_elems(map) || !has_elem(map, 'E')
+		|| !has_elem(map, 'C') || !has_elem(map, 'P'))
 		return(ft_put_error_map());
 	return (1);
 
