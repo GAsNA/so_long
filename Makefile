@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rleseur <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/12/20 14:34:54 by rleseur           #+#    #+#              #
+#    Updated: 2021/12/20 14:55:58 by rleseur          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 ####### DESIGN #######
 
 # Style de typo :
@@ -29,7 +41,7 @@ _ICYAN			=	\033[46m
 _IBLANC			=	\033[47m
 
 # Appel
-_VALID			=	/bin/echo -e "${_VERT}${_IBLANC}\#\# $1${_FIN}"
+_VALID			=	/bin/echo -e "${_VERT}${_IVIOLET}\#\# $1${_FIN}"
 _EMOJI			=	/bin/echo -e "${_GRAS}${_VIOLET}$1${_FIN}\n"
 
 CREATED_BIN		=	@$(call _VALID,"Binary created!")
@@ -52,10 +64,11 @@ MINILIBX_PATH	=	./librairies/minilibx/
 MINILIBX		=	${MINILIBX_PATH}libmlx.a
 
 SRCS_PATH		=	./srcs/
-SRCS			=	${SRCS_PATH}main_test.c	\
-					${SRCS_PATH}errors.c	\
-					${SRCS_PATH}map.c	\
-					${SRCS_PATH}valid_map.c
+SRCS			=	${SRCS_PATH}main_test2.c
+					#${SRCS_PATH}main_test.c	\
+					#${SRCS_PATH}errors.c	\
+					#${SRCS_PATH}map.c	\
+					#${SRCS_PATH}valid_map.c
 
 OBJS			=	${SRCS:.c=.o}
 
@@ -73,8 +86,8 @@ MLXFLAGS		=	-L. -lXext -L. -lX11
 
 all:			${NAME}
 
-${NAME}:		${OBJS} ${LIBFT} #${MINILIBX}
-				${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o ${NAME}
+${NAME}:		${OBJS} ${LIBFT} ${MINILIBX}
+				${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} -o ${NAME}
 				${CREATED_BIN}
 
 .c.o:
@@ -89,7 +102,7 @@ ${MINILIBX}:
 
 clean:
 				make -C ${LIBFT_PATH} clean
-				#make -C ${MINILIBX_PATH} clean
+				make -C ${MINILIBX_PATH} clean
 				${RM} ${OBJS}
 				${DELETED_OBJS}
 

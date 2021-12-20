@@ -2,6 +2,7 @@
 # define SO_LONG_H
 
 # include "../librairies/libft/libft.h"
+# include "../librairies/minilibx/mlx.h"
 
 # include <stdlib.h>
 # include <unistd.h>
