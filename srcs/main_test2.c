@@ -47,8 +47,11 @@ int	key_hook(int keycode, t_vars *vars)
 {
 	(void) vars;
 	if (keycode == ESC)
+	{
 		close_win(keycode, vars);
-	return (0);
+		exit(0);
+	}
+	return (1);
 }
 
 int main()
@@ -75,5 +78,7 @@ int main()
 	}
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	mlx_key_hook(vars.win, key_hook, &vars);
+	mlx_hook(vars.win, 17, 1L<<17, close_win, (void *)0); //SEGFAULT
 	mlx_loop(vars.mlx);
+	return (0);
 }
