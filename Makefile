@@ -6,7 +6,7 @@
 #    By: rleseur <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/20 14:34:54 by rleseur           #+#    #+#              #
-#    Updated: 2021/12/21 14:33:28 by rleseur          ###   ########.fr        #
+#    Updated: 2021/12/21 17:37:20 by rleseur          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,10 +66,12 @@ MINILIBX_PATH	=	./librairies/minilibx/
 MINILIBX		=	${MINILIBX_PATH}libmlx.a
 
 SRCS_PATH		=	./srcs/
-SRCS			=	${SRCS_PATH}main.c	\
+SRCS			=	${SRCS_PATH}main.c		\
 					${SRCS_PATH}errors.c	\
 					${SRCS_PATH}map.c		\
-					${SRCS_PATH}valid_map.c
+					${SRCS_PATH}valid_map.c	\
+					${SRCS_PATH}window.c	\
+					${SRCS_PATH}actions_win.c
 					#${SRCS_PATH}main_test2.c
 
 OBJS			=	${SRCS:.c=.o}

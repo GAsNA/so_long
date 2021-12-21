@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:16:09 by rleseur           #+#    #+#             */
-/*   Updated: 2021/12/21 16:16:59 by rleseur          ###   ########.fr       */
+/*   Updated: 2021/12/21 17:51:02 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+
+/* Keycode */
+# define ESC 65307
+
+/* X11 events */
+# define DESTROYNOTIFY 17
+
+/* X11 masks */
+# define STRUCTURENOTIFYMASK (1L<<17)
 
 typedef struct s_vars
 {
@@ -48,5 +57,12 @@ int		ft_put_error_path(void);
 int		ft_put_error_map(void);
 int		ft_put_error_extension(void);
 int		ft_put_error_nb_args(void);
+
+/* window.c */
+void	ft_open_window(int x, int y);
+
+/* actions_win.c */
+int		close_win(int keycode, t_vars *vars);
+int		key_hook(int keycode, t_vars *vars);
 
 #endif

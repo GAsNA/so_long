@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   actions_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/21 14:26:31 by rleseur           #+#    #+#             */
-/*   Updated: 2021/12/21 17:52:04 by rleseur          ###   ########.fr       */
+/*   Created: 2021/12/21 17:34:10 by rleseur           #+#    #+#             */
+/*   Updated: 2021/12/21 17:43:37 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	main(int ac, char **av)
+int	close_win(int keycode, t_vars *vars)
 {
-	char	**map;
-	int		x;
-	int		y;
-
-	if (ac != 2)
-		return (ft_put_error_nb_args());
-	map = ft_get_map(av[1]);
-	if (!ft_is_valid_map(map))
-		return (0);
-	x = ft_strlen(map[0]);
-	y = 0;
-	while (map[y])
-		y++;
-	ft_open_window(x * 50, y * 50);
+	(void) keycode;
+	ft_putstr_fd("Good Bye!\n", 1);
+	mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
+}
+
+int	key_hook(int keycode, t_vars *vars)
+{
+	(void) vars;
+	if (keycode == ESC)
+	{
+		close_win(keycode, vars);
+		exit(0);
+	}
+	return (1);
 }
