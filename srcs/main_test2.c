@@ -58,10 +58,14 @@ int main()
 {
 	t_data	img;
 	t_vars	vars;
+//	int		img_width;
+//	int		img_height;
+//	char	*relative_path = "./test.png";
 
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello Wolrd!");
 	img.img = mlx_new_image(vars.mlx, 1920, 1080);
+//	img.img = mlx_xpm_file_to_image(vars.mlx, relative_path, &img_width, &img_height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 
 	int	x = 0;
@@ -81,3 +85,15 @@ int main()
 	mlx_hook(vars.win, 17, 1L<<17, close_win, (void *)0); //SEGFAULT
 	mlx_loop(vars.mlx);
 }
+
+/*int	main()
+{
+	void	*mlx;
+	void	*img;
+	char	*relative_path = "./test.xpm";
+	int		img_width;
+	int		img_height;
+
+	mlx = mlx_init();
+	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+}*/

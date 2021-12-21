@@ -6,7 +6,7 @@
 #    By: rleseur <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/20 14:34:54 by rleseur           #+#    #+#              #
-#    Updated: 2021/12/21 12:05:04 by rleseur          ###   ########.fr        #
+#    Updated: 2021/12/21 14:24:28 by rleseur          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ _ICYAN			=	\033[46m
 _IBLANC			=	\033[47m
 
 # Appel
-_VALID			=	/bin/echo -e "${_VERT}${_IVIOLET}\#\# $1${_FIN}"
+_VALID			=	/bin/echo -e "${_JAUNE}\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\
+					${_VERT}${_IVIOLET}\#\# $1${_FIN}"
 _EMOJI			=	/bin/echo -e "${_GRAS}${_VIOLET}$1${_FIN}\n"
 
 CREATED_BIN		=	@$(call _VALID,"Binary created!")
