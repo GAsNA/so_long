@@ -20,5 +20,6 @@ char	**ft_get_map(char *path);
 int	ft_put_error_path();
 int	ft_put_error_map();
 int	ft_put_error_extension();
+int	ft_put_error_nb_args();
 
 #endif
