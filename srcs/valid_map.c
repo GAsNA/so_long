@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   valid_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/21 16:08:17 by rleseur           #+#    #+#             */
+/*   Updated: 2021/12/21 16:09:07 by rleseur          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/so_long.h"
 
 /*static int	has_one_spwan(char **map)
@@ -28,12 +40,12 @@ static int	is_closed(char **map)
 {
 	int	i;
 	int	line;
-	
+
 	line = -1;
 	while (map[++line])
 	{
 		i = -1;
-		while(map[line][++i])
+		while (map[line][++i])
 		{
 			if ((line == 0 && map[line][i] != '1')
 				|| (!map[line + 1] && map[line][i] != '1'))
@@ -160,7 +172,6 @@ int	ft_is_valid_map(char **map)
 	if (!is_closed(map) || !is_rectangular(map)
 		|| !has_good_elems(map) || !has_elem(map, 'E')
 		|| !has_elem(map, 'C') || !has_elem(map, 'P'))
-		return(ft_put_error_map());
+		return (ft_put_error_map());
 	return (1);
-
 }

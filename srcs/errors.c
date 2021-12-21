@@ -1,32 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/21 16:06:07 by rleseur           #+#    #+#             */
+/*   Updated: 2021/12/21 16:06:57 by rleseur          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/so_long.h"
 
-static void	ft_put_error()
+static void	ft_put_error(void)
 {
 	ft_putstr_fd("Error\n", 1);
 }
 
-int	ft_put_error_path()
+int	ft_put_error_path(void)
 {
 	ft_put_error();
 	ft_putstr_fd("Map does not found\n", 1);
 	return (0);
 }
 
-int	ft_put_error_map()
+int	ft_put_error_map(void)
 {
 	ft_put_error();
 	ft_putstr_fd("Map is not correct\n", 1);
 	return (0);
 }
 
-int	ft_put_error_extension()
+int	ft_put_error_extension(void)
 {
 	ft_put_error();
 	ft_putstr_fd("Map does not have the correct extension\n", 1);
 	return (0);
 }
 
-int	ft_put_error_nb_args()
+int	ft_put_error_nb_args(void)
 {
 	ft_put_error();
 	ft_putstr_fd("The number of arguments is invalid\n", 1);

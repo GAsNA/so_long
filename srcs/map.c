@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/21 16:07:47 by rleseur           #+#    #+#             */
+/*   Updated: 2021/12/21 16:08:02 by rleseur          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/so_long.h"
 
 static int	length_map(char *path)
 {
-	int	size;
-	int	fd;
+	int		size;
+	int		fd;
 	char	bf;
 
 	fd = open(path, O_RDONLY);
@@ -27,8 +39,8 @@ static int	check_extension(char *path)
 char	**ft_get_map(char *path)
 {
 	char	*map;
-	int	i;
-	int	fd;
+	int		i;
+	int		fd;
 	char	bf;
 
 	if (!check_extension(path))

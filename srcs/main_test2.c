@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_test2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/21 16:11:03 by rleseur           #+#    #+#             */
+/*   Updated: 2021/12/21 16:15:02 by rleseur          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/so_long.h"
 #include <stdio.h>
 
@@ -21,7 +33,7 @@ typedef struct s_data
 	int		endian;
 }			t_data;
 
-typedef struct	s_vars
+typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
@@ -32,7 +44,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 int	close_win(int keycode, t_vars *vars)
@@ -54,22 +66,24 @@ int	key_hook(int keycode, t_vars *vars)
 	return (1);
 }
 
-int main()
+int	main(void)
 {
 	t_data	img;
 	t_vars	vars;
+	int		x;
+	int		y;
 //	int		img_width;
 //	int		img_height;
 //	char	*relative_path = "./test.png";
-
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello Wolrd!");
 	img.img = mlx_new_image(vars.mlx, 1920, 1080);
-//	img.img = mlx_xpm_file_to_image(vars.mlx, relative_path, &img_width, &img_height);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-
-	int	x = 0;
-	int	y = 0;
+//	img.img = mlx_xpm_file_to_image(vars.mlx, relative_path, &img_width,
+			//&img_height);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+			&img.endian);
+	x = 0;
+	y = 0;
 	while (y < 50)
 	{
 		my_mlx_pixel_put(&img, x, y, 0x00FF0000);
@@ -82,7 +96,7 @@ int main()
 	}
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_hook(vars.win, 17, 1L<<17, close_win, (void *)0); //SEGFAULT
+	mlx_hook(vars.win, 17, 1L << 17, close_win, (void *)0); //SEGFAULT
 	mlx_loop(vars.mlx);
 }
 
