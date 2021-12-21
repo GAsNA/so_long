@@ -6,7 +6,7 @@
 #    By: rleseur <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/20 14:34:54 by rleseur           #+#    #+#              #
-#    Updated: 2021/12/20 14:55:58 by rleseur          ###   ########.fr        #
+#    Updated: 2021/12/21 12:05:04 by rleseur          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ _VALID			=	/bin/echo -e "${_VERT}${_IVIOLET}\#\# $1${_FIN}"
 _EMOJI			=	/bin/echo -e "${_GRAS}${_VIOLET}$1${_FIN}\n"
 
 CREATED_BIN		=	@$(call _VALID,"Binary created!")
-CREATED_LIB		=	@$(call _VALID,"Library created!")
+CREATED_LIBFT	=	@$(call _VALID,"Libft library created!")
+CREATED_MINILX	=	@$(call _VALID,"Minilibx library created!")
 DELETED_OBJS	=	@$(call _VALID,"Objs deleted!")
 DELETED_BIN		=	@$(call _VALID,"Binary deleted!")
 TRANQUER		=	@$(call _EMOJI,"（ ^_^）o自自o（^_^ ）")
@@ -95,10 +96,11 @@ ${NAME}:		${OBJS} ${LIBFT} ${MINILIBX}
 
 ${LIBFT}:
 				make -C ${LIBFT_PATH}
-				${CREATED_LIB}
+				${CREATED_LIBFT}
 
 ${MINILIBX}:
 				make -C ${MINILIBX_PATH}
+				${CREATED_MINILX}
 
 clean:
 				make -C ${LIBFT_PATH} clean

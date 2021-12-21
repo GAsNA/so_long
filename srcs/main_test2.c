@@ -80,5 +80,4 @@ int main()
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, 17, 1L<<17, close_win, (void *)0); //SEGFAULT
 	mlx_loop(vars.mlx);
-	return (0);
 }
