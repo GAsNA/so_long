@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+# include "../librairies/libft/libft.h"
+# include "../librairies/minilibx/mlx.h"
 #include <stdio.h>
 
 #define ESC 65307

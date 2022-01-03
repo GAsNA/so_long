@@ -27,6 +27,6 @@ int	main(int ac, char **av)
 	y = 0;
 	while (map[y])
 		y++;
-	ft_open_window(x * 50, y * 50);
+	ft_open_window(x * 32, y * 32, map);
 	return (0);
 }

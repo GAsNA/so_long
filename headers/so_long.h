@@ -59,7 +59,10 @@ int		ft_put_error_extension(void);
 int		ft_put_error_nb_args(void);
 
 /* window.c */
-void	ft_open_window(int x, int y);
+void	ft_open_window(int x, int y, char **map);
+
+/* draw_map.c */
+void	draw_map(t_data *img, char **map);
 
 /* actions_win.c */
 int		close_win(int keycode, t_vars *vars);

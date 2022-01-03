@@ -31,13 +31,14 @@ static t_data	get_image(int x, int y, t_vars vars)
 	return (img);
 }
 
-void	ft_open_window(int x, int y)
+void	ft_open_window(int x, int y, char **map)
 {
 	t_vars	vars;
 	t_data	img;
 
 	vars = get_window(x, y);
 	img = get_image(x, y, vars);
+	draw_map(&img, map);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK,
