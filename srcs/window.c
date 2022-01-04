@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 15:53:10 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/04 11:02:46 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/04 16:21:07 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void	ft_open_window(int x, int y, char **map)
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK,
-		close_win, (void *)0); //SEGFAULT
+		close_win, &vars); //SEGFAULT
 	mlx_loop(vars.mlx);
 }
