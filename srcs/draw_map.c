@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/04 11:23:47 by rleseur           #+#    #+#             */
+/*   Updated: 2022/01/04 11:24:51 by rleseur          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/so_long.h"
 
 static void	my_mlx_pixel_put(t_data ***data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = (*(*data))->addr + (y * (*(*data))->line_length + x * ((*(*data))->bits_per_pixel / 8));
+	dst = (*(*data))->addr
+		+ (y * (*(*data))->line_length + x * ((*(*data))->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 
@@ -25,10 +38,9 @@ static void	draw_square(t_data **data, int j, int i, int color)
 			x = 0;
 		}
 	}
-
 }
 
-void    draw_map(t_data *img, char **map)
+void	draw_map(t_data *img, char **map)
 {
 	int	i;
 	int	j;

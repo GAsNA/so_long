@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:16:09 by rleseur           #+#    #+#             */
-/*   Updated: 2021/12/21 17:51:02 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/04 11:12:18 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@
 
 /* Keycode */
 # define ESC 65307
+# define W 119
+# define S 115
+# define A 97
+# define D 100
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
+# define RIGHT 65363
 
 /* X11 events */
 # define DESTROYNOTIFY 17
@@ -35,6 +43,7 @@ typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
+	int		count;
 }	t_vars;
 
 typedef struct s_data

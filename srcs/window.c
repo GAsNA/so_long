@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 15:53:10 by rleseur           #+#    #+#             */
-/*   Updated: 2021/12/21 17:51:34 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/04 11:02:46 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static t_vars	get_window(int x, int y)
 {
 	t_vars	vars;
 
+	vars.count = 0;
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, x, y, "So_long");
 	return (vars);
