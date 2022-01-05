@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:16:09 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/04 11:12:18 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/05 09:24:47 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,14 @@
 # define RIGHT 65363
 
 /* X11 events */
-# define DESTROYNOTIFY 17
+# ifdef __APPLE__
+#  define DESTROYNOTIFY 17
+# elif __linux__
+#  define DESTROYNOTIFY 33
+# endif
 
 /* X11 masks */
-# define STRUCTURENOTIFYMASK (1L<<17)
+# define STRUCTURENOTIFYMASK 1L<<17
 
 typedef struct s_vars
 {
@@ -74,7 +78,7 @@ void	ft_open_window(int x, int y, char **map);
 void	draw_map(t_data *img, char **map);
 
 /* actions_win.c */
-int		close_win(int keycode, t_vars *vars);
+int		close_win(t_vars *vars);
 int		key_hook(int keycode, t_vars *vars);
 
 #endif

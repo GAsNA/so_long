@@ -6,7 +6,7 @@
 #    By: rleseur <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/20 14:34:54 by rleseur           #+#    #+#              #
-#    Updated: 2021/12/21 17:37:20 by rleseur          ###   ########.fr        #
+#    Updated: 2022/01/04 17:09:04 by rleseur          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ NAME			=	so_long
 
 CC				=	clang
 RM				=	rm -rf
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror -g3
 MLXFLAGS		=	-L. -lXext -L. -lX11
 
 ### Commandes
