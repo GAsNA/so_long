@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 15:53:10 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/05 09:30:39 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/05 10:26:15 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static t_data	get_image(int x, int y, t_vars *vars)
 			&img.endian);
 	return (img);
 }
-
-#include <stdio.h>
 
 void	ft_open_window(int x, int y, char **map)
 {
