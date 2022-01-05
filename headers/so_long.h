@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:16:09 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/05 09:24:47 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/05 17:19:06 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+
+# include <stdio.h>
 
 /* Keycode */
 # define ESC 65307
@@ -43,6 +45,10 @@
 /* X11 masks */
 # define STRUCTURENOTIFYMASK 1L<<17
 
+/* Images paths */
+# define WALLPATH "../assets/img/Wall/wall.xpm"
+# define GROUNDPATH "../assets/img/Ground/ground.png"
+
 typedef struct s_vars
 {
 	void	*mlx;
@@ -57,7 +63,22 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		img_width;
+	int		img_height;
 }	t_data;
+
+typedef struct s_imgs
+{
+	t_data	wall;
+	t_data	ground;
+}	t_imgs;
+
+typedef struct s_game
+{
+	int	count_col;
+	int	x_perso;
+	int	y_perso;
+}	t_game;
 
 /* valid_map.c */
 int		ft_is_valid_map(char **map);
