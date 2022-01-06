@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
-
+/*
 static void	my_mlx_pixel_put(t_data ***data, int x, int y, int color)
 {
 	char	*dst;
@@ -64,6 +64,31 @@ void	draw_map(t_data *img, char **map)
 			else if (map[i][j] == 'P')
 				color = 0x00FF0000;
 			draw_square(&img, j * 32, i * 32, color);
+		}
+	}
+}*/
+
+void	draw_map(t_imgs *imgs, t_vars *vars, char **map)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] == '1')
+				mlx_put_image_to_window(vars->mlx, vars->win, imgs->wall.img, j * 32, i * 32);
+                        else if (map[i][j] == '0')
+                                mlx_put_image_to_window(vars->mlx, vars->win, imgs->ground.img, j * 32, i * 32);
+                        else if (map[i][j] == 'C')
+                                mlx_put_image_to_window(vars->mlx, vars->win, imgs->card.img, j * 32, i * 32);
+                        else if (map[i][j] == 'E')
+                                mlx_put_image_to_window(vars->mlx, vars->win, imgs->exit_cl.img, j * 32, i * 32);
+                        else if (map[i][j] == 'P')
+                                mlx_put_image_to_window(vars->mlx, vars->win, imgs->ground.img, j * 32, i * 32);
 		}
 	}
 }

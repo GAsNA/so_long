@@ -46,8 +46,11 @@
 # define STRUCTURENOTIFYMASK 1L<<17
 
 /* Images paths */
-# define WALLPATH "../assets/img/Wall/wall.xpm"
-# define GROUNDPATH "../assets/img/Ground/ground.png"
+# define CARDPATH "./assets/img/Card/card.xpm"
+# define EXITOPPATH "./assets/img/Exit/exit_op.xpm"
+# define EXITCLPATH "./assets/img/Exit/exit_cl.xpm"
+# define GROUNDPATH "./assets/img/Ground/ground.xpm"
+# define WALLPATH "./assets/img/Wall/wall.xpm"
 
 typedef struct s_vars
 {
@@ -69,8 +72,11 @@ typedef struct s_data
 
 typedef struct s_imgs
 {
-	t_data	wall;
+	t_data	card;
+	t_data	exit_op;
+	t_data	exit_cl;
 	t_data	ground;
+	t_data	wall;
 }	t_imgs;
 
 typedef struct s_game
@@ -96,7 +102,7 @@ int		ft_put_error_nb_args(void);
 void	ft_open_window(int x, int y, char **map);
 
 /* draw_map.c */
-void	draw_map(t_data *img, char **map);
+void	draw_map(t_imgs *imgs, t_vars *vars, char **map);
 
 /* actions_win.c */
 int		close_win(t_vars *vars);

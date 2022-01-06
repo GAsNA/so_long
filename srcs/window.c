@@ -19,11 +19,11 @@ static void	get_window(t_vars *vars, int x, int y)
 	vars->win = mlx_new_window(vars->mlx, x, y, "So_long");
 }
 
-static t_data	get_image(int x, int y, t_vars *vars)
+static t_data	get_image(char *path, t_vars *vars)
 {
 	t_data	img;
 
-	img.img = mlx_new_image(vars->mlx, x, y);
+	img.img = mlx_xpm_file_to_image(vars->mlx, path, &img.img_width, &img.img_height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
 	return (img);
@@ -32,21 +32,19 @@ static t_data	get_image(int x, int y, t_vars *vars)
 void	ft_open_window(int x, int y, char **map)
 {
 	t_vars	vars;
-	t_data	img;
-//	t_imgs	imgs;
+	t_imgs	imgs;
 
 	(void) map;
 	get_window(&vars, x, y);
-	img = get_image(x, y, &vars);
-//	imgs.wall.img_width = 0;
-//	imgs.wall.img_height = 0;
-//	imgs.wall.img = mlx_xpm_file_to_image(vars.mlx, WALLPATH, &imgs.wall.img_width, &imgs.wall.img_height);
-//	printf("wall_width: %i\nwall_height: %i\n", imgs.wall.img_width, imgs.wall.img_height);
-//	imgs.wall.addr = mlx_get_data_addr(imgs.wall.img, &imgs.wall.bits_per_pixel, &imgs.wall.line_length,
- //           &imgs.wall.endian);
-//	printf("wall_width: %i\nwall_height: %i\n", imgs.wall.img_width, imgs.wall.img_height);
-	draw_map(&img, map);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	imgs.card = get_image(CARDPATH, &vars);
+	imgs.exit_op = get_image(EXITOPPATH, &vars);
+	imgs.exit_cl = get_image(EXITCLPATH, &vars);
+	imgs.ground = get_image(GROUNDPATH, &vars);
+	imgs.wall = get_image(WALLPATH, &vars);
+	draw_map(&imgs, &vars, map);
+	//mlx_put_image_to_window(vars.mlx, vars.win, imgs.wall.img, 0, 0);
+	//mlx_put_image_to_window(vars.mlx, vars.win, imgs.ground.img, 32, 0);
+	//mlx_put_image_to_window(vars.mlx, vars.win, imgs.card.img, 32, 0);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, close_win, &vars);
 	mlx_loop(vars.mlx);
