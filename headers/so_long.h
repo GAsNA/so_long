@@ -51,6 +51,11 @@
 # define EXITCLPATH "./assets/img/Exit/exit_cl.xpm"
 # define GROUNDPATH "./assets/img/Ground/ground.xpm"
 # define WALLPATH "./assets/img/Wall/wall.xpm"
+# define PERSOBPATH "./assets/img/Perso/perso_back.xpm"
+# define PERSOFPATH "./assets/img/Perso/perso_front.xpm"
+# define PERSOLPATH "./assets/img/Perso/perso_left.xpm"
+# define PERSORPATH "./assets/img/Perso/perso_right.xpm"
+
 
 typedef struct s_vars
 {
@@ -72,12 +77,16 @@ typedef struct s_data
 
 typedef struct s_imgs
 {
-	t_data	card;
-	t_data	exit_op;
-	t_data	exit_cl;
-	t_data	ground;
-	t_data	wall;
-}	t_imgs;
+        t_data  card;
+        t_data  exit_op;
+        t_data  exit_cl;
+        t_data  ground;
+        t_data  wall;
+        t_data  perso_b;
+        t_data  perso_f;
+        t_data  perso_l;
+        t_data  perso_r;
+}       t_imgs;
 
 typedef struct s_game
 {

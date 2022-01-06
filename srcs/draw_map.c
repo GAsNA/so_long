@@ -88,7 +88,7 @@ void	draw_map(t_imgs *imgs, t_vars *vars, char **map)
                         else if (map[i][j] == 'E')
                                 mlx_put_image_to_window(vars->mlx, vars->win, imgs->exit_cl.img, j * 32, i * 32);
                         else if (map[i][j] == 'P')
-                                mlx_put_image_to_window(vars->mlx, vars->win, imgs->ground.img, j * 32, i * 32);
+                                mlx_put_image_to_window(vars->mlx, vars->win, imgs->perso_f.img, j * 32, i * 32);
 		}
 	}
 }
