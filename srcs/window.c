@@ -42,27 +42,52 @@ static void	get_all_imgs(t_imgs *imgs, t_vars *vars)
 	imgs->perso_r = get_image(PERSORPATH, &vars);
 }
 
-static int	get_game(t_game *game)
+static int	get_pos_perso(t_game **game)
 {
 	int	i;
 	int	j;
 
-	game->mov_count = 0;
+        i = -1;
+        while ((*game)->map[++i])
+        {
+                j = -1;
+                while ((*game)->map[i][++j])
+                {
+                        if ((*game)->map[i][j] == 'P')
+                        {
+                                (*game)->x_perso = j;
+                                (*game)->y_perso = i;
+                                return (0);
+                        }
+                }
+        }
+	return (0);
+}
+
+static void	get_total_cards(t_game **game)
+{
+	int	i;
+	int	j;
+
+	(*game)->total_cards = 0;
 	i = -1;
-	while (game->map[++i])
+	while ((*game)->map[++i])
 	{
 		j = -1;
-		while (game->map[i][++j])
+		while ((*game)->map[i][++j])
 		{
-			if (game->map[i][j] == 'P')
-			{
-				game->x_perso = j;
-				game->y_perso = i;
-				return (0);
-			}
+			if ((*game)->map[i][j] == 'C')
+				(*game)->total_cards++;
 		}
 	}
-	return (0);
+}
+
+static void	get_game(t_game *game)
+{
+	game->mov_count = 0;
+	game->got_cards = 0;
+	get_pos_perso(&game);
+	get_total_cards(&game);
 }
 
 static void	get_all(t_all *all, t_vars *vars, t_imgs *imgs, t_game *game)

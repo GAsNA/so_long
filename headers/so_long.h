@@ -96,6 +96,8 @@ typedef struct s_game
 	int		mov_count;
 	int		x_perso;
 	int		y_perso;
+	int		got_cards;
+	int		total_cards;
 }	t_game;
 
 typedef struct s_all

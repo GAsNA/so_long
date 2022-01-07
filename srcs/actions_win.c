@@ -26,11 +26,21 @@ static int	check_collision(char **map, int x, int y)
 	return (0);
 }
 
+static int	check_collectible(char **map, int x, int y)
+{
+	if (map[y][x] == 'C')
+		return (1);
+	return (0);
+}
+
 static void	go_up(t_all **all)
 {
 	if (check_collision((*all)->game->map, (*all)->game->x_perso,
 			(*all)->game->y_perso - 1))
 		return ;
+	if (check_collectible((*all)->game->map, (*all)->game->x_perso,
+			(*all)->game->y_perso - 1))
+		(*all)->game->got_cards++;
 	(*all)->game->mov_count += 1;
 	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
 		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
@@ -46,6 +56,9 @@ static void	go_down(t_all **all)
 	if (check_collision((*all)->game->map, (*all)->game->x_perso,
 			(*all)->game->y_perso + 1))
 		return ;
+	if (check_collectible((*all)->game->map, (*all)->game->x_perso,
+			(*all)->game->y_perso + 1))
+		(*all)->game->got_cards++;
 	(*all)->game->mov_count += 1;
 	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
 		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
@@ -61,6 +74,9 @@ static void	go_left(t_all **all)
 	if (check_collision((*all)->game->map, (*all)->game->x_perso - 1,
 			(*all)->game->y_perso))
 		return ;
+	if (check_collectible((*all)->game->map, (*all)->game->x_perso - 1,
+			(*all)->game->y_perso))
+		(*all)->game->got_cards++;
 	(*all)->game->mov_count += 1;
 	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
 		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
@@ -76,6 +92,9 @@ static void	go_right(t_all **all)
 	if (check_collision((*all)->game->map, (*all)->game->x_perso + 1,
 			(*all)->game->y_perso))
 		return ;
+	if (check_collectible((*all)->game->map, (*all)->game->x_perso + 1,
+			(*all)->game->y_perso))
+		(*all)->game->got_cards++;
 	(*all)->game->mov_count += 1;
 	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
 		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
