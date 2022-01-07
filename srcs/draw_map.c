@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 11:23:47 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/04 11:24:51 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/07 11:16:02 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,20 @@ void	draw_map(t_imgs *imgs, t_vars *vars, char **map)
 		while (map[i][++j])
 		{
 			if (map[i][j] == '1')
-				mlx_put_image_to_window(vars->mlx, vars->win, imgs->wall.img, j * 32, i * 32);
-                        else if (map[i][j] == '0')
-                                mlx_put_image_to_window(vars->mlx, vars->win, imgs->ground.img, j * 32, i * 32);
-                        else if (map[i][j] == 'C')
-                                mlx_put_image_to_window(vars->mlx, vars->win, imgs->card.img, j * 32, i * 32);
-                        else if (map[i][j] == 'E')
-                                mlx_put_image_to_window(vars->mlx, vars->win, imgs->exit_cl.img, j * 32, i * 32);
-                        else if (map[i][j] == 'P')
-                                mlx_put_image_to_window(vars->mlx, vars->win, imgs->perso_f.img, j * 32, i * 32);
+				mlx_put_image_to_window(vars->mlx, vars->win, imgs->wall.img,
+					j * SIZE, i * SIZE);
+			else if (map[i][j] == '0')
+				mlx_put_image_to_window(vars->mlx, vars->win, imgs->ground.img,
+					j * SIZE, i * SIZE);
+			else if (map[i][j] == 'C')
+				mlx_put_image_to_window(vars->mlx, vars->win, imgs->card.img,
+					j * SIZE, i * SIZE);
+			else if (map[i][j] == 'E')
+				mlx_put_image_to_window(vars->mlx, vars->win, imgs->exit_cl.img,
+					j * SIZE, i * SIZE);
+			else if (map[i][j] == 'P')
+				mlx_put_image_to_window(vars->mlx, vars->win, imgs->perso_f.img,
+					j * SIZE, i * SIZE);
 		}
 	}
 }

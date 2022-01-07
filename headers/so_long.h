@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:16:09 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/05 17:19:06 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/07 11:00:59 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <fcntl.h>
 
 # include <stdio.h>
+
+# define SIZE 32
 
 /* Keycode */
 # define ESC 65307
@@ -56,12 +58,10 @@
 # define PERSOLPATH "./assets/img/Perso/perso_left.xpm"
 # define PERSORPATH "./assets/img/Perso/perso_right.xpm"
 
-
 typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
-	int		count;
 }	t_vars;
 
 typedef struct s_data
@@ -90,10 +90,17 @@ typedef struct s_imgs
 
 typedef struct s_game
 {
-	int	count_col;
+	int	mov_count;
 	int	x_perso;
 	int	y_perso;
 }	t_game;
+
+typedef struct s_all
+{
+	t_vars	*vars;
+	t_imgs	*imgs;
+	t_game	*game;
+}	t_all;
 
 /* valid_map.c */
 int		ft_is_valid_map(char **map);
@@ -115,6 +122,6 @@ void	draw_map(t_imgs *imgs, t_vars *vars, char **map);
 
 /* actions_win.c */
 int		close_win(t_vars *vars);
-int		key_hook(int keycode, t_vars *vars);
+int		key_hook(int keycode, t_all *all);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 14:26:31 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/04 11:45:35 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/07 08:46:45 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	main(int ac, char **av)
 	y = 0;
 	while (map[y])
 		y++;
-	ft_open_window(x * 32, y * 32, map);
+	ft_open_window(x * SIZE, y * SIZE, map);
 	return (0);
 }
