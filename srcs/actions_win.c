@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 17:34:10 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/07 12:25:05 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/07 14:45:23 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,19 @@ int	close_win(t_vars *vars)
 	exit (EXIT_SUCCESS);
 }
 
+static int	check_collision(char **map, int x, int y)
+{
+	if (map[y][x] == '1' || map[y][x] == 'E')
+		return (1);
+	return (0);
+}
+
 static void	go_up(t_all **all)
 {
+	if (check_collision((*all)->game->map, (*all)->game->x_perso,
+			(*all)->game->y_perso - 1))
+		return ;
 	(*all)->game->mov_count += 1;
-	ft_putstr_fd("UP\n", 1);
 	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
 		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
 		(*all)->game->y_perso * SIZE);
@@ -34,8 +43,10 @@ static void	go_up(t_all **all)
 
 static void	go_down(t_all **all)
 {
+	if (check_collision((*all)->game->map, (*all)->game->x_perso,
+			(*all)->game->y_perso + 1))
+		return ;
 	(*all)->game->mov_count += 1;
-	ft_putstr_fd("DOWN\n", 1);
 	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
 		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
 		(*all)->game->y_perso * SIZE);
@@ -47,8 +58,10 @@ static void	go_down(t_all **all)
 
 static void	go_left(t_all **all)
 {
+	if (check_collision((*all)->game->map, (*all)->game->x_perso - 1,
+			(*all)->game->y_perso))
+		return ;
 	(*all)->game->mov_count += 1;
-	ft_putstr_fd("LEFT\n", 1);
 	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
 		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
 		(*all)->game->y_perso * SIZE);
@@ -60,8 +73,10 @@ static void	go_left(t_all **all)
 
 static void	go_right(t_all **all)
 {
+	if (check_collision((*all)->game->map, (*all)->game->x_perso + 1,
+			(*all)->game->y_perso))
+		return ;
 	(*all)->game->mov_count += 1;
-	ft_putstr_fd("RIGHT\n", 1);
 	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
 		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
 		(*all)->game->y_perso * SIZE);

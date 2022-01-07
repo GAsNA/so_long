@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 15:53:10 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/07 11:17:27 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/07 14:30:26 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,19 @@ static void	get_all_imgs(t_imgs *imgs, t_vars *vars)
 	imgs->perso_r = get_image(PERSORPATH, &vars);
 }
 
-static int	get_game(t_game *game, char **map)
+static int	get_game(t_game *game)
 {
 	int	i;
 	int	j;
 
 	game->mov_count = 0;
 	i = -1;
-	while (map[++i])
+	while (game->map[++i])
 	{
 		j = -1;
-		while (map[i][++j])
+		while (game->map[i][++j])
 		{
-			if (map[i][j] == 'P')
+			if (game->map[i][j] == 'P')
 			{
 				game->x_perso = j;
 				game->y_perso = i;
@@ -72,19 +72,17 @@ static void	get_all(t_all *all, t_vars *vars, t_imgs *imgs, t_game *game)
 	all->game = game;
 }
 
-void	ft_open_window(int x, int y, char **map)
+void	ft_open_window(t_game game)
 {
 	t_vars	vars;
 	t_imgs	imgs;
-	t_game	game;
 	t_all	all;
 
-	(void) map;
-	get_window(&vars, x, y);
+	get_window(&vars, game.x_win * SIZE, game.y_win * SIZE);
 	get_all_imgs(&imgs, &vars);
-	get_game(&game, map);
+	get_game(&game);
 	get_all(&all, &vars, &imgs, &game);
-	draw_map(&imgs, &vars, map);
+	draw_map(&all);
 	mlx_key_hook(vars.win, key_hook, &all);
 	mlx_hook(vars.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, close_win, &vars);
 	mlx_loop(vars.mlx);

@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 14:26:31 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/07 08:46:45 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/07 14:32:51 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 int	main(int ac, char **av)
 {
-	char	**map;
-	int		x;
-	int		y;
+	t_game	game;
 
 	if (ac != 2)
 		return (ft_put_error_nb_args());
-	map = ft_get_map(av[1]);
-	if (!ft_is_valid_map(map))
+	game.map = ft_get_map(av[1]);
+	if (!ft_is_valid_map(game.map))
 		return (0);
-	x = ft_strlen(map[0]);
-	y = 0;
-	while (map[y])
-		y++;
-	ft_open_window(x * SIZE, y * SIZE, map);
+	game.x_win = ft_strlen(game.map[0]);
+	game.y_win = 0;
+	while (game.map[game.y_win])
+		game.y_win++;
+	ft_open_window(game);
 	return (0);
 }

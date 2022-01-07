@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:16:09 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/07 12:17:08 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/07 14:33:17 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,12 @@ typedef struct s_imgs
 
 typedef struct s_game
 {
-	int	mov_count;
-	int	x_perso;
-	int	y_perso;
+	char	**map;
+	int		x_win;
+	int		y_win;
+	int		mov_count;
+	int		x_perso;
+	int		y_perso;
 }	t_game;
 
 typedef struct s_all
@@ -115,10 +118,10 @@ int		ft_put_error_extension(void);
 int		ft_put_error_nb_args(void);
 
 /* window.c */
-void	ft_open_window(int x, int y, char **map);
+void	ft_open_window(t_game game);
 
 /* draw_map.c */
-void	draw_map(t_imgs *imgs, t_vars *vars, char **map);
+void	draw_map(t_all *all);
 
 /* actions_win.c */
 int		close_win(t_vars *vars);

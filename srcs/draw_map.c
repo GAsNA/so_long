@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 11:23:47 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/07 11:16:02 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/07 14:34:41 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,32 +68,32 @@ void	draw_map(t_data *img, char **map)
 	}
 }*/
 
-void	draw_map(t_imgs *imgs, t_vars *vars, char **map)
+void	draw_map(t_all *all)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	while (map[++i])
+	while (all->game->map[++i])
 	{
 		j = -1;
-		while (map[i][++j])
+		while (all->game->map[i][++j])
 		{
-			if (map[i][j] == '1')
-				mlx_put_image_to_window(vars->mlx, vars->win, imgs->wall.img,
-					j * SIZE, i * SIZE);
-			else if (map[i][j] == '0')
-				mlx_put_image_to_window(vars->mlx, vars->win, imgs->ground.img,
-					j * SIZE, i * SIZE);
-			else if (map[i][j] == 'C')
-				mlx_put_image_to_window(vars->mlx, vars->win, imgs->card.img,
-					j * SIZE, i * SIZE);
-			else if (map[i][j] == 'E')
-				mlx_put_image_to_window(vars->mlx, vars->win, imgs->exit_cl.img,
-					j * SIZE, i * SIZE);
-			else if (map[i][j] == 'P')
-				mlx_put_image_to_window(vars->mlx, vars->win, imgs->perso_f.img,
-					j * SIZE, i * SIZE);
+			if (all->game->map[i][j] == '1')
+				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
+					all->imgs->wall.img, j * SIZE, i * SIZE);
+			else if (all->game->map[i][j] == '0')
+				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
+					all->imgs->ground.img, j * SIZE, i * SIZE);
+			else if (all->game->map[i][j] == 'C')
+				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
+					all->imgs->card.img, j * SIZE, i * SIZE);
+			else if (all->game->map[i][j] == 'E')
+				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
+					all->imgs->exit_cl.img, j * SIZE, i * SIZE);
+			else if (all->game->map[i][j] == 'P')
+				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
+					all->imgs->perso_f.img, j * SIZE, i * SIZE);
 		}
 	}
 }
