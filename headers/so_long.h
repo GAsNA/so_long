@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:16:09 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/07 11:00:59 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/07 12:17:08 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,16 @@ typedef struct s_data
 
 typedef struct s_imgs
 {
-        t_data  card;
-        t_data  exit_op;
-        t_data  exit_cl;
-        t_data  ground;
-        t_data  wall;
-        t_data  perso_b;
-        t_data  perso_f;
-        t_data  perso_l;
-        t_data  perso_r;
-}       t_imgs;
+	t_data	card;
+	t_data	exit_op;
+	t_data	exit_cl;
+	t_data	ground;
+	t_data	wall;
+	t_data	perso_b;
+	t_data	perso_f;
+	t_data	perso_l;
+	t_data	perso_r;
+}	t_imgs;
 
 typedef struct s_game
 {
