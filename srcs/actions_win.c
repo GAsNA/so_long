@@ -19,27 +19,6 @@ int	close_win(t_vars *vars)
 	exit (EXIT_SUCCESS);
 }
 
-static int	check_collision(char **map, int x, int y)
-{
-	if (map[y][x] == '1' || map[y][x] == 'E')
-		return (1);
-	return (0);
-}
-
-static int	check_collectible(char **map, int x, int y)
-{
-	if (map[y][x] == 'C')
-		return (1);
-	return (0);
-}
-
-static int	check_exit(char **map, int x, int y)
-{
-	if (map[y][x] == 'E')
-		return (1);
-	return (0);
-}
-
 static void	activate_exit(t_all **all)
 {
 	int	i;
@@ -60,125 +39,19 @@ static void	activate_exit(t_all **all)
 	(*all)->game->activated_exit = 1;
 }
 
-static void	go_up(t_all **all)
+static void	put_count_mov(t_all *all)
 {
-	if ((*all)->game->activated_exit
-			&& check_exit((*all)->game->map, (*all)->game->x_perso,
-				(*all)->game->y_perso - 1))
-	{
-		(*all)->game->mov_count += 1;
-		mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-			(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
-			(*all)->game->y_perso * SIZE);
-		(*all)->game->perso_exited = 1;
-	}
-	if (check_collision((*all)->game->map, (*all)->game->x_perso,
-			(*all)->game->y_perso - 1))
-		return ;
-	if (check_collectible((*all)->game->map, (*all)->game->x_perso,
-			(*all)->game->y_perso - 1))
-		(*all)->game->got_cards++;
-	(*all)->game->mov_count += 1;
-	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
-		(*all)->game->y_perso * SIZE);
-	(*all)->game->y_perso -= 1;
-	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-		(*all)->imgs->perso_b.img, (*all)->game->x_perso * SIZE,
-		(*all)->game->y_perso * SIZE);
+	ft_putstr_fd("Count mov.: ", 1);
+	ft_putnbr_fd(all->game->mov_count, 1);
+	ft_putstr_fd("\n", 1);
 }
 
-static void	go_down(t_all **all)
+static void	put_count_cards(t_all *all)
 {
-	if ((*all)->game->activated_exit
-			&& check_exit((*all)->game->map, (*all)->game->x_perso,
-				(*all)->game->y_perso + 1))
-	{
-		(*all)->game->mov_count += 1;
-		mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-			(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
-			(*all)->game->y_perso * SIZE);
-		(*all)->game->perso_exited = 1;
-	}
-	if (check_collision((*all)->game->map, (*all)->game->x_perso,
-			(*all)->game->y_perso + 1))
-		return ;
-	if (check_collectible((*all)->game->map, (*all)->game->x_perso,
-			(*all)->game->y_perso + 1))
-		(*all)->game->got_cards++;
-	(*all)->game->mov_count += 1;
-	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
-		(*all)->game->y_perso * SIZE);
-	(*all)->game->y_perso += 1;
-	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-		(*all)->imgs->perso_f.img, (*all)->game->x_perso * SIZE,
-		(*all)->game->y_perso * SIZE);
-}
-
-static void	go_left(t_all **all)
-{
-	if ((*all)->game->activated_exit
-			&& check_exit((*all)->game->map, (*all)->game->x_perso - 1,
-				(*all)->game->y_perso))
-	{
-		(*all)->game->mov_count += 1;
-		mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-			(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
-			(*all)->game->y_perso * SIZE);
-		(*all)->game->perso_exited = 1;
-	}
-	if (check_collision((*all)->game->map, (*all)->game->x_perso - 1,
-			(*all)->game->y_perso))
-		return ;
-	if (check_collectible((*all)->game->map, (*all)->game->x_perso - 1,
-			(*all)->game->y_perso))
-		(*all)->game->got_cards++;
-	(*all)->game->mov_count += 1;
-	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
-		(*all)->game->y_perso * SIZE);
-	(*all)->game->x_perso -= 1;
-	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-		(*all)->imgs->perso_l.img, (*all)->game->x_perso * SIZE,
-		(*all)->game->y_perso * SIZE);
-}
-
-static void	go_right(t_all **all)
-{
-	if ((*all)->game->activated_exit
-			&& check_exit((*all)->game->map, (*all)->game->x_perso + 1,
-				(*all)->game->y_perso))
-	{
-		(*all)->game->mov_count += 1;
-		mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-			(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
-			(*all)->game->y_perso * SIZE);
-		(*all)->game->perso_exited = 1;
-	}
-	if (check_collision((*all)->game->map, (*all)->game->x_perso + 1,
-			(*all)->game->y_perso))
-		return ;
-	if (check_collectible((*all)->game->map, (*all)->game->x_perso + 1,
-			(*all)->game->y_perso))
-		(*all)->game->got_cards++;
-	(*all)->game->mov_count += 1;
-	if ((*all)->game->activated_exit
-			&& check_exit((*all)->game->map, (*all)->game->x_perso + 1,
-				(*all)->game->y_perso))
-	{
-		mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-			(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
-			(*all)->game->y_perso * SIZE);
-		(*all)->game->perso_exited = 1;
-	}
-	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-		(*all)->imgs->ground.img, (*all)->game->x_perso * SIZE,
-		(*all)->game->y_perso * SIZE);
-	(*all)->game->x_perso += 1;
-	mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
-		(*all)->imgs->perso_r.img, (*all)->game->x_perso * SIZE,
-		(*all)->game->y_perso * SIZE);
+	ft_putnbr_fd(all->game->got_cards, 1);
+	ft_putchar_fd('\\', 1);
+	ft_putnbr_fd(all->game->total_cards, 1);
+	ft_putstr_fd(" cards\n", 1);
 }
 
 int	key_hook(int keycode, t_all *all)
@@ -200,8 +73,7 @@ int	key_hook(int keycode, t_all *all)
 		go_right(&all);
 	if (all->game->got_cards == all->game->total_cards)
 		activate_exit(&all);
-	ft_putstr_fd("Count mov.: ", 1);
-	ft_putnbr_fd(all->game->mov_count, 1);
-	ft_putstr_fd("\n", 1);
+	put_count_mov(all);
+	put_count_cards(all);
 	return (1);
 }

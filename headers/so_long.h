@@ -131,4 +131,15 @@ void	draw_map(t_all *all);
 int		close_win(t_vars *vars);
 int		key_hook(int keycode, t_all *all);
 
+/* check_if_is.c */
+int	check_collision(char **map, int x, int y);
+int	check_collectible(t_game **game, int x, int y);
+int	check_exit(char **map, int x, int y);
+
+/* moving.c */
+void	go_up(t_all **all);
+void	go_down(t_all **all);
+void	go_left(t_all **all);
+void	go_right(t_all **all);
+
 #endif

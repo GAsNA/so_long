@@ -72,8 +72,9 @@ SRCS			=	${SRCS_PATH}main.c		\
 					${SRCS_PATH}valid_map.c	\
 					${SRCS_PATH}window.c	\
 					${SRCS_PATH}actions_win.c	\
-					${SRCS_PATH}draw_map.c
-					#${SRCS_PATH}main_test2.c
+					${SRCS_PATH}draw_map.c	\
+					${SRCS_PATH}check_if_is.c	\
+					${SRCS_PATH}moving.c
 
 OBJS			=	${SRCS:.c=.o}
 
