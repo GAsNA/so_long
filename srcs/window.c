@@ -86,6 +86,8 @@ static void	get_game(t_game *game)
 {
 	game->mov_count = 0;
 	game->got_cards = 0;
+	game->activated_exit = 0;
+	game->perso_exited = 0;
 	get_pos_perso(&game);
 	get_total_cards(&game);
 }

@@ -98,6 +98,8 @@ typedef struct s_game
 	int		y_perso;
 	int		got_cards;
 	int		total_cards;
+	int		activated_exit;
+	int		perso_exited;
 }	t_game;
 
 typedef struct s_all
