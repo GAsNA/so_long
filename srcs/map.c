@@ -42,6 +42,7 @@ char	**ft_get_map(char *path)
 	int		i;
 	int		fd;
 	char	bf;
+	char	**d_map;
 
 	if (!check_extension(path))
 	{
@@ -62,5 +63,7 @@ char	**ft_get_map(char *path)
 		map[++i] = bf;
 	map[i++] = '\0';
 	close(fd);
-	return (ft_split(map, '\n'));
+	d_map = ft_split(map, '\n');
+	free(map);
+	return (d_map);
 }

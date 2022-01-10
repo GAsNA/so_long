@@ -130,7 +130,7 @@ void	ft_open_window(t_game game);
 void	draw_map(t_all *all);
 
 /* actions_win.c */
-int		close_win(t_vars *vars);
+int		close_win(t_all *all);
 int		key_hook(int keycode, t_all *all);
 
 /* check_if_is.c */

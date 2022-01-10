@@ -12,10 +12,11 @@
 
 #include "../headers/so_long.h"
 
-int	close_win(t_vars *vars)
+int	close_win(t_all *all)
 {
 	ft_putstr_fd("Good Bye!\n", 1);
-	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_window(all->vars->mlx, all->vars->win);
+	free(all->vars->mlx);
 	exit (EXIT_SUCCESS);
 }
 
@@ -58,7 +59,7 @@ int	key_hook(int keycode, t_all *all)
 {
 	if (keycode == ESC)
 	{
-		close_win(all->vars);
+		close_win(all);
 		exit(0);
 	}
 	if (all->game->perso_exited)

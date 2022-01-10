@@ -118,6 +118,6 @@ void	ft_open_window(t_game game)
 	draw_map(&all);
 	//mlx_key_hook(vars.win, key_hook, &all);
 	mlx_hook(vars.win, KEYPRESS, KEYPRESSMASK, key_hook, &all);
-	mlx_hook(vars.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, close_win, &vars);
+	mlx_hook(vars.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, close_win, &all);
 	mlx_loop(vars.mlx);
 }
