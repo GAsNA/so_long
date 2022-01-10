@@ -38,6 +38,7 @@
 # define RIGHT 65363
 
 /* X11 events */
+# define KEYPRESS 2
 # ifdef __APPLE__
 #  define DESTROYNOTIFY 17
 # elif __linux__
@@ -46,6 +47,7 @@
 
 /* X11 masks */
 # define STRUCTURENOTIFYMASK 1L<<17
+# define KEYPRESSMASK 1L<<0
 
 /* Images paths */
 # define CARDPATH "./assets/img/Card/card.xpm"

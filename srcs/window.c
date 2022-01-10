@@ -116,7 +116,8 @@ void	ft_open_window(t_game game)
 	get_game(&game);
 	get_all(&all, &vars, &imgs, &game);
 	draw_map(&all);
-	mlx_key_hook(vars.win, key_hook, &all);
+	//mlx_key_hook(vars.win, key_hook, &all);
+	mlx_hook(vars.win, KEYPRESS, KEYPRESSMASK, key_hook, &all);
 	mlx_hook(vars.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, close_win, &vars);
 	mlx_loop(vars.mlx);
 }
