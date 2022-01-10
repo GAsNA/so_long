@@ -42,11 +42,13 @@ static void	get_all_imgs(t_imgs *imgs, t_vars *vars)
 	imgs->perso_r = get_image(PERSORPATH, &vars);
 }
 
-static int	get_pos_perso(t_game **game)
+static void	get_pos_perso(t_game **game)
 {
 	int	i;
 	int	j;
+	int	find;
 
+	find = 0;
         i = -1;
         while ((*game)->map[++i])
         {
@@ -55,13 +57,17 @@ static int	get_pos_perso(t_game **game)
                 {
                         if ((*game)->map[i][j] == 'P')
                         {
-                                (*game)->x_perso = j;
-                                (*game)->y_perso = i;
-                                return (0);
+				if (!find)
+				{
+                                	(*game)->x_perso = j;
+                                	(*game)->y_perso = i;
+                                	find = 1;
+				}
+				else
+					(*game)->map[i][j] = '0';
                         }
                 }
         }
-	return (0);
 }
 
 static void	get_total_cards(t_game **game)
