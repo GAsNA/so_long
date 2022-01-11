@@ -25,6 +25,7 @@
 # include <stdio.h>
 
 # define SIZE 32
+# define SIZE_PARAMS 30
 
 /* Keycode */
 # define ESC 65307
@@ -139,11 +140,16 @@ int		key_hook(int keycode, t_all *all);
 int	check_collision(char **map, int x, int y);
 int	check_collectible(t_game **game, int x, int y);
 int	check_exit(char **map, int x, int y);
+int	check_ennemy(char **map, int x, int y);
 
 /* moving.c */
 void	go_up(t_all **all);
 void	go_down(t_all **all);
 void	go_left(t_all **all);
 void	go_right(t_all **all);
+
+/* put_params.c */
+void	put_count_mov(t_all *all);
+void	put_count_cards(t_all *all);
 
 #endif

@@ -84,7 +84,8 @@ SRCS_B			=	${SRCS_B_PATH}main.c              \
 					${SRCS_B_PATH}actions_win.c       \
 					${SRCS_B_PATH}draw_map.c  \
 					${SRCS_B_PATH}check_if_is.c       \
-					${SRCS_B_PATH}moving.c
+					${SRCS_B_PATH}moving.c	\
+					${SRCS_B_PATH}put_params.c
 
 OBJS			=	${SRCS:.c=.o}
 OBJS_B			=	${SRCS_B:.c=.o}

@@ -23,3 +23,10 @@ int	check_exit(char **map, int x, int y)
 		return (1);
 	return (0);
 }
+
+int	check_ennemy(char **map, int x, int y)
+{
+	if (map[y][x] == 'K')
+		return (1);
+	return (0);
+}

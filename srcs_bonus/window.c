@@ -112,10 +112,12 @@ void	ft_open_window(t_game game)
 	t_imgs	imgs;
 	t_all	all;
 
-	get_window(&vars, game.x_win * SIZE, game.y_win * SIZE);
+	get_window(&vars, game.x_win * SIZE, (game.y_win * SIZE) + SIZE_PARAMS);
 	get_all_imgs(&imgs, &vars);
 	get_game(&game);
 	get_all(&all, &vars, &imgs, &game);
+	put_count_mov(&all);
+	put_count_cards(&all);
 	draw_map(&all);
 	//mlx_key_hook(vars.win, key_hook, &all);
 	mlx_hook(vars.win, KEYPRESS, KEYPRESSMASK, key_hook, &all);
