@@ -75,13 +75,26 @@ SRCS			=	${SRCS_PATH}main.c		\
 					${SRCS_PATH}draw_map.c	\
 					${SRCS_PATH}check_if_is.c	\
 					${SRCS_PATH}moving.c
+SRCS_B_PATH		=	./srcs_bonus/
+SRCS_B			=	${SRCS_B_PATH}main.c              \
+					${SRCS_B_PATH}errors.c    \
+					${SRCS_B_PATH}map.c               \
+					${SRCS_B_PATH}valid_map.c \
+					${SRCS_B_PATH}window.c    \
+					${SRCS_B_PATH}actions_win.c       \
+					${SRCS_B_PATH}draw_map.c  \
+					${SRCS_B_PATH}check_if_is.c       \
+					${SRCS_B_PATH}moving.c
 
 OBJS			=	${SRCS:.c=.o}
+OBJS_B			=	${SRCS_B:.c=.o}
 
-HEADER_PATH		=	./headers/
-HEADER			=	${HEADER_PATH}so_long.h
+HEADERS_PATH		=	./headers/
+HEADER			=	${HEADERS_PATH}so_long.h
+HEADER_B		=	${HEADERS_PATH}so_long_bonus.h
 
 NAME			=	so_long
+NAME_B			=	so_long_bonus
 
 CC				=	clang
 RM				=	rm -rf
@@ -94,6 +107,10 @@ all:			${NAME}
 
 ${NAME}:		${OBJS} ${LIBFT} ${MINILIBX}
 				${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} -o ${NAME}
+				${CREATED_BIN}
+
+bonus:			${OBJS_B} ${LIBFT} ${MINILIBX}
+				${CC} ${CFLAGS} ${OBJS_B} ${LIBFT} ${MINILIBX} ${MLXFLAGS} -o ${NAME_B}
 				${CREATED_BIN}
 
 .c.o:
@@ -111,13 +128,15 @@ clean:
 				make -C ${LIBFT_PATH} clean
 				make -C ${MINILIBX_PATH} clean
 				${RM} ${OBJS}
+				${RM} ${OBJS_B}
 				${DELETED_OBJS}
 
 fclean:			clean
 				make -C ${LIBFT_PATH} fclean
 				${RM} ${NAME}
+				${RM} ${NAME_B}
 				${DELETED_BIN}
 
 re:				fclean all
 
-.PHONY:			all clean fclean re libft minilibx
+.PHONY:			all bonus clean fclean re libft minilibx
