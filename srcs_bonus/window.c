@@ -41,6 +41,8 @@ static void	get_all_imgs(t_imgs *imgs, t_vars *vars)
 	imgs->perso_l = get_image(PERSOLPATH, &vars);
 	imgs->perso_r = get_image(PERSORPATH, &vars);
 	imgs->ennemy = get_image(ENNEMYPATH, &vars);
+	imgs->ennemy2 = get_image(ENNEMY2PATH, &vars);
+	imgs->ennemy3 = get_image(ENNEMY3PATH, &vars);
 }
 
 static void	get_pos_perso(t_game **game)
@@ -95,6 +97,8 @@ static void	get_game(t_game *game)
 	game->got_cards = 0;
 	game->activated_exit = 0;
 	game->perso_exited = 0;
+	game->ennemy_pos = 1;
+	game->loop = 0;
 	get_pos_perso(&game);
 	get_total_cards(&game);
 }
@@ -104,6 +108,49 @@ static void	get_all(t_all *all, t_vars *vars, t_imgs *imgs, t_game *game)
 	all->vars = vars;
 	all->imgs = imgs;
 	all->game = game;
+}
+
+static void	get_ennemy_pos(t_data ennemy, char **map, t_vars *vars)
+{
+	int	i;
+	int	j;
+	
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] == 'K')
+				mlx_put_image_to_window(vars->mlx, vars->win, ennemy.img, j * SIZE, i * SIZE);
+		}
+	}
+}
+
+static int	ennemy_animation(t_all *all)
+{
+	if (all->game->loop < 10000)
+	{
+		all->game->loop += 1;
+		return (0);
+	}
+	all->game->loop = 0;
+	if (all->game->ennemy_pos == 1)
+	{
+		get_ennemy_pos(all->imgs->ennemy2, all->game->map, all->vars);
+		all->game->ennemy_pos = 2;
+	}
+	else if (all->game->ennemy_pos == 2)
+	{
+		get_ennemy_pos(all->imgs->ennemy3, all->game->map, all->vars);
+		all->game->ennemy_pos = 3;
+	}
+	else if (all->game->ennemy_pos == 3)
+	{
+		get_ennemy_pos(all->imgs->ennemy, all->game->map, all->vars);
+		all->game->ennemy_pos = 1;
+	}
+	return (0);
 }
 
 void	ft_open_window(t_game game)
@@ -122,5 +169,6 @@ void	ft_open_window(t_game game)
 	//mlx_key_hook(vars.win, key_hook, &all);
 	mlx_hook(vars.win, KEYPRESS, KEYPRESSMASK, key_hook, &all);
 	mlx_hook(vars.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, close_win, &all);
+	mlx_loop_hook(vars.mlx, ennemy_animation, &all);
 	mlx_loop(vars.mlx);
 }

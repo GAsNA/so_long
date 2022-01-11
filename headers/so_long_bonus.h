@@ -61,6 +61,8 @@
 # define PERSOLPATH "./assets/img/Perso/perso_left.xpm"
 # define PERSORPATH "./assets/img/Perso/perso_right.xpm"
 # define ENNEMYPATH "./assets/img/Ennemy/ennemy.xpm"
+# define ENNEMY2PATH "./assets/img/Ennemy/ennemy2.xpm"
+# define ENNEMY3PATH "./assets/img/Ennemy/ennemy3.xpm"
 
 typedef struct s_vars
 {
@@ -91,6 +93,8 @@ typedef struct s_imgs
 	t_data	perso_l;
 	t_data	perso_r;
 	t_data	ennemy;
+	t_data	ennemy2;
+	t_data	ennemy3;
 }	t_imgs;
 
 typedef struct s_game
@@ -105,6 +109,8 @@ typedef struct s_game
 	int		total_cards;
 	int		activated_exit;
 	int		perso_exited;
+	int		ennemy_pos;
+	int		loop;
 }	t_game;
 
 typedef struct s_all
