@@ -86,7 +86,7 @@ static int	has_good_elems(char **map)
 		{
 			if (map[line][i] != 'E' && map[line][i] != 'C'
 				&& map[line][i] != 'P' && map[line][i] != '0'
-				&& map[line][i] != '1')
+				&& map[line][i] != '1' && map[line][i] != 'K')
 				return (0);
 		}
 	}

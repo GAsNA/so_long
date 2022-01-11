@@ -94,6 +94,9 @@ void	draw_map(t_all *all)
 			else if (all->game->map[i][j] == 'P')
 				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
 					all->imgs->perso_f.img, j * SIZE, i * SIZE);
+			else if (all->game->map[i][j] == 'K')
+				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
+					all->imgs->ennemy.img, j * SIZE, i * SIZE);
 		}
 	}
 }

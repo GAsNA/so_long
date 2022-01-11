@@ -59,6 +59,7 @@
 # define PERSOFPATH "./assets/img/Perso/perso_front.xpm"
 # define PERSOLPATH "./assets/img/Perso/perso_left.xpm"
 # define PERSORPATH "./assets/img/Perso/perso_right.xpm"
+# define ENNEMYPATH "./assets/img/Ennemy/ennemy.xpm"
 
 typedef struct s_vars
 {
@@ -88,6 +89,7 @@ typedef struct s_imgs
 	t_data	perso_f;
 	t_data	perso_l;
 	t_data	perso_r;
+	t_data	ennemy;
 }	t_imgs;
 
 typedef struct s_game

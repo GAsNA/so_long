@@ -2,7 +2,7 @@
 
 int	check_collision(char **map, int x, int y)
 {
-	if (map[y][x] == '1' || map[y][x] == 'E')
+	if (map[y][x] == '1' || map[y][x] == 'E' || map[y][x] == 'K')
 		return (1);
 	return (0);
 }

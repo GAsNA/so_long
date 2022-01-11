@@ -40,6 +40,7 @@ static void	get_all_imgs(t_imgs *imgs, t_vars *vars)
 	imgs->perso_f = get_image(PERSOFPATH, &vars);
 	imgs->perso_l = get_image(PERSOLPATH, &vars);
 	imgs->perso_r = get_image(PERSORPATH, &vars);
+	imgs->ennemy = get_image(ENNEMYPATH, &vars);
 }
 
 static void	get_pos_perso(t_game **game)
