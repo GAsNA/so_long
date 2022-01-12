@@ -18,17 +18,6 @@ static void	get_window(t_vars *vars, int x, int y)
 	vars->win = mlx_new_window(vars->mlx, x, y, "So_long");
 }
 
-static t_data	get_image(char *path, t_vars **vars)
-{
-	t_data	img;
-
-	img.img = mlx_xpm_file_to_image((*vars)->mlx, path,
-			&img.img_width, &img.img_height);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
-	return (img);
-}
-
 static void	get_all_imgs(t_imgs *imgs, t_vars *vars)
 {
 	imgs->card = get_image(CARDPATH, &vars);
@@ -43,52 +32,6 @@ static void	get_all_imgs(t_imgs *imgs, t_vars *vars)
 	imgs->ennemy = get_image(ENNEMYPATH, &vars);
 	imgs->ennemy2 = get_image(ENNEMY2PATH, &vars);
 	imgs->ennemy3 = get_image(ENNEMY3PATH, &vars);
-}
-
-static void	get_pos_perso(t_game **game)
-{
-	int	i;
-	int	j;
-	int	find;
-
-	find = 0;
-        i = -1;
-        while ((*game)->map[++i])
-        {
-                j = -1;
-                while ((*game)->map[i][++j])
-                {
-                        if ((*game)->map[i][j] == 'P')
-                        {
-				if (!find)
-				{
-                                	(*game)->x_perso = j;
-                                	(*game)->y_perso = i;
-                                	find = 1;
-				}
-				else
-					(*game)->map[i][j] = '0';
-                        }
-                }
-        }
-}
-
-static void	get_total_cards(t_game **game)
-{
-	int	i;
-	int	j;
-
-	(*game)->total_cards = 0;
-	i = -1;
-	while ((*game)->map[++i])
-	{
-		j = -1;
-		while ((*game)->map[i][++j])
-		{
-			if ((*game)->map[i][j] == 'C')
-				(*game)->total_cards++;
-		}
-	}
 }
 
 static void	get_game(t_game *game)
@@ -108,49 +51,6 @@ static void	get_all(t_all *all, t_vars *vars, t_imgs *imgs, t_game *game)
 	all->vars = vars;
 	all->imgs = imgs;
 	all->game = game;
-}
-
-static void	get_ennemy_pos(t_data ennemy, char **map, t_vars *vars)
-{
-	int	i;
-	int	j;
-	
-	i = -1;
-	while (map[++i])
-	{
-		j = -1;
-		while (map[i][++j])
-		{
-			if (map[i][j] == 'K')
-				mlx_put_image_to_window(vars->mlx, vars->win, ennemy.img, j * SIZE, i * SIZE);
-		}
-	}
-}
-
-static int	ennemy_animation(t_all *all)
-{
-	if (all->game->loop < 10000)
-	{
-		all->game->loop += 1;
-		return (0);
-	}
-	all->game->loop = 0;
-	if (all->game->ennemy_pos == 1)
-	{
-		get_ennemy_pos(all->imgs->ennemy2, all->game->map, all->vars);
-		all->game->ennemy_pos = 2;
-	}
-	else if (all->game->ennemy_pos == 2)
-	{
-		get_ennemy_pos(all->imgs->ennemy3, all->game->map, all->vars);
-		all->game->ennemy_pos = 3;
-	}
-	else if (all->game->ennemy_pos == 3)
-	{
-		get_ennemy_pos(all->imgs->ennemy, all->game->map, all->vars);
-		all->game->ennemy_pos = 1;
-	}
-	return (0);
 }
 
 void	ft_open_window(t_game game)

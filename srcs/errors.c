@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:06:07 by rleseur           #+#    #+#             */
-/*   Updated: 2021/12/21 16:06:57 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/12 18:26:01 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_put_error(void)
 	ft_putstr_fd("# Error\n", 1);
 }
 
-int	ft_put_error_path(void)
+char	**ft_put_error_path(void)
 {
 	ft_put_error();
 	ft_putstr_fd("# Map does not found\n", 1);
@@ -32,7 +32,7 @@ int	ft_put_error_map(void)
 	return (0);
 }
 
-int	ft_put_error_extension(void)
+char	**ft_put_error_extension(void)
 {
 	ft_put_error();
 	ft_putstr_fd("# Map does not have the correct extension\n", 1);

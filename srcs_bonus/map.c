@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:07:47 by rleseur           #+#    #+#             */
-/*   Updated: 2021/12/21 16:08:02 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/12 18:27:36 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,10 @@ char	**ft_get_map(char *path)
 	char	**d_map;
 
 	if (!check_extension(path))
-	{
-		ft_put_error_extension();
-		return (0);
-	}
+		return (ft_put_error_extension());
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_put_error_path();
-		return (0);
-	}
+		return (ft_put_error_path());
 	map = malloc(length_map(path) * sizeof(char));
 	if (!map)
 		return (0);

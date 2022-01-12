@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 11:23:47 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/07 14:34:41 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/12 18:36:41 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,11 @@ void	draw_map(t_data *img, char **map)
 
 void	draw_map(t_all *all)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	void	*img;
 
+	img = 0;
 	i = -1;
 	while (all->game->map[++i])
 	{
@@ -80,20 +82,17 @@ void	draw_map(t_all *all)
 		while (all->game->map[i][++j])
 		{
 			if (all->game->map[i][j] == '1')
-				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
-					all->imgs->wall.img, j * SIZE, i * SIZE);
+				img = all->imgs->wall.img;
 			else if (all->game->map[i][j] == '0')
-				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
-					all->imgs->ground.img, j * SIZE, i * SIZE);
+				img = all->imgs->ground.img;
 			else if (all->game->map[i][j] == 'C')
-				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
-					all->imgs->card.img, j * SIZE, i * SIZE);
+				img = all->imgs->card.img;
 			else if (all->game->map[i][j] == 'E')
-				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
-					all->imgs->exit_cl.img, j * SIZE, i * SIZE);
+				img = all->imgs->exit_cl.img;
 			else if (all->game->map[i][j] == 'P')
-				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
-					all->imgs->perso_f.img, j * SIZE, i * SIZE);
+				img = all->imgs->perso_f.img;
+			mlx_put_image_to_window(all->vars->mlx, all->vars->win, img,
+				j * SIZE, i * SIZE);
 		}
 	}
 }

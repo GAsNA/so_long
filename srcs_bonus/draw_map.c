@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 11:23:47 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/07 14:34:41 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/12 18:46:10 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,28 @@ void	draw_map(t_data *img, char **map)
 	}
 }*/
 
+static void	*get_image_for_map(t_all *all, int i, int j)
+{
+	if (all->game->map[i][j] == '1')
+		return (all->imgs->wall.img);
+	else if (all->game->map[i][j] == '0')
+		return (all->imgs->ground.img);
+	else if (all->game->map[i][j] == 'C')
+		return (all->imgs->card.img);
+	else if (all->game->map[i][j] == 'E')
+		return (all->imgs->exit_cl.img);
+	else if (all->game->map[i][j] == 'P')
+		return (all->imgs->perso_f.img);
+	else if (all->game->map[i][j] == 'K')
+		return (all->imgs->ennemy.img);
+	return (0);
+}
+
 void	draw_map(t_all *all)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	void	*img;
 
 	i = -1;
 	while (all->game->map[++i])
@@ -79,24 +97,9 @@ void	draw_map(t_all *all)
 		j = -1;
 		while (all->game->map[i][++j])
 		{
-			if (all->game->map[i][j] == '1')
-				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
-					all->imgs->wall.img, j * SIZE, i * SIZE);
-			else if (all->game->map[i][j] == '0')
-				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
-					all->imgs->ground.img, j * SIZE, i * SIZE);
-			else if (all->game->map[i][j] == 'C')
-				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
-					all->imgs->card.img, j * SIZE, i * SIZE);
-			else if (all->game->map[i][j] == 'E')
-				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
-					all->imgs->exit_cl.img, j * SIZE, i * SIZE);
-			else if (all->game->map[i][j] == 'P')
-				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
-					all->imgs->perso_f.img, j * SIZE, i * SIZE);
-			else if (all->game->map[i][j] == 'K')
-				mlx_put_image_to_window(all->vars->mlx, all->vars->win,
-					all->imgs->ennemy.img, j * SIZE, i * SIZE);
+			img = get_image_for_map(all, i, j);
+			mlx_put_image_to_window(all->vars->mlx, all->vars->win, img,
+				j * SIZE, i * SIZE);
 		}
 	}
 }

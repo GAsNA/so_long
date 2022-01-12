@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:16:09 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/07 14:33:17 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/12 18:28:54 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,9 +127,9 @@ int		ft_is_valid_map(char **map);
 char	**ft_get_map(char *path);
 
 /* errors.c */
-int		ft_put_error_path(void);
+char	**ft_put_error_path(void);
 int		ft_put_error_map(void);
-int		ft_put_error_extension(void);
+char	**ft_put_error_extension(void);
 int		ft_put_error_nb_args(void);
 
 /* window.c */
@@ -143,10 +143,10 @@ int		close_win(t_all *all);
 int		key_hook(int keycode, t_all *all);
 
 /* check_if_is.c */
-int	check_collision(char **map, int x, int y);
-int	check_collectible(t_game **game, int x, int y);
-int	check_exit(char **map, int x, int y);
-int	check_ennemy(char **map, int x, int y);
+int		check_collision(char **map, int x, int y);
+int		check_collectible(t_game **game, int x, int y);
+int		check_exit(char **map, int x, int y);
+int		check_ennemy(char **map, int x, int y);
 
 /* moving.c */
 void	go_up(t_all **all);
@@ -157,5 +157,13 @@ void	go_right(t_all **all);
 /* put_params.c */
 void	put_count_mov(t_all *all);
 void	put_count_cards(t_all *all);
+
+/* ennemy_animation.c */
+int		ennemy_animation(t_all *all);
+
+/* part_init.c */
+t_data	get_image(char *path, t_vars **vars);
+void	get_pos_perso(t_game **game);
+void	get_total_cards(t_game **game);
 
 #endif

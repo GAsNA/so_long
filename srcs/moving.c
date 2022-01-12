@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moving.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rleseur <rleseur@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/12 18:05:23 by rleseur           #+#    #+#             */
+/*   Updated: 2022/01/12 18:06:01 by rleseur          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/so_long.h"
 
 void	go_up(t_all **all)
 {
 	if ((*all)->game->activated_exit
-			&& check_exit((*all)->game->map, (*all)->game->x_perso,
-				(*all)->game->y_perso - 1))
+		&& check_exit((*all)->game->map, (*all)->game->x_perso,
+			(*all)->game->y_perso - 1))
 	{
 		(*all)->game->mov_count += 1;
 		mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
@@ -31,8 +43,8 @@ void	go_up(t_all **all)
 void	go_down(t_all **all)
 {
 	if ((*all)->game->activated_exit
-			&& check_exit((*all)->game->map, (*all)->game->x_perso,
-				(*all)->game->y_perso + 1))
+		&& check_exit((*all)->game->map, (*all)->game->x_perso,
+			(*all)->game->y_perso + 1))
 	{
 		(*all)->game->mov_count += 1;
 		mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
@@ -59,8 +71,8 @@ void	go_down(t_all **all)
 void	go_left(t_all **all)
 {
 	if ((*all)->game->activated_exit
-			&& check_exit((*all)->game->map, (*all)->game->x_perso - 1,
-				(*all)->game->y_perso))
+		&& check_exit((*all)->game->map, (*all)->game->x_perso - 1,
+			(*all)->game->y_perso))
 	{
 		(*all)->game->mov_count += 1;
 		mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
@@ -87,8 +99,8 @@ void	go_left(t_all **all)
 void	go_right(t_all **all)
 {
 	if ((*all)->game->activated_exit
-			&& check_exit((*all)->game->map, (*all)->game->x_perso + 1,
-				(*all)->game->y_perso))
+		&& check_exit((*all)->game->map, (*all)->game->x_perso + 1,
+			(*all)->game->y_perso))
 	{
 		(*all)->game->mov_count += 1;
 		mlx_put_image_to_window((*all)->vars->mlx, (*all)->vars->win,
