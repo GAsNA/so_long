@@ -1,2 +1,0 @@
-mlx_clear_window(mlx, win);
-mlx_destroy_image(mlx, game->img_player);
