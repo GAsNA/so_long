@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 17:34:10 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/13 23:06:22 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/17 09:06:39 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int	close_win(t_all *all)
 	mlx_destroy_image(all->vars->mlx, all->imgs->perso_f.img);
 	mlx_destroy_image(all->vars->mlx, all->imgs->perso_l.img);
 	mlx_destroy_image(all->vars->mlx, all->imgs->perso_r.img);
+	mlx_destroy_image(all->vars->mlx, all->imgs->ennemy.img);
+	mlx_destroy_image(all->vars->mlx, all->imgs->ennemy2.img);
+	mlx_destroy_image(all->vars->mlx, all->imgs->ennemy3.img);
 	mlx_destroy_window(all->vars->mlx, all->vars->win);
 	mlx_destroy_display(all->vars->mlx);
 	free(all->vars->mlx);

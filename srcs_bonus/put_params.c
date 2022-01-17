@@ -6,7 +6,7 @@
 /*   By: rleseur <rleseur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:04:07 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/13 23:26:20 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/17 08:45:29 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	clear_string(t_all **all, char *str, int x, int y)
 
 void	put_count_mov(t_all *all)
 {
-	int	y;
+	int		y;
 	char	*nb;
 
 	y = (all->game->y_win * SIZE) + 20;
@@ -34,7 +34,7 @@ void	put_count_mov(t_all *all)
 
 void	put_count_cards(t_all *all)
 {
-	int	y;
+	int		y;
 	char	*nb;
 
 	y = (all->game->y_win * SIZE) + 20;
