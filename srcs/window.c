@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 15:53:10 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/13 22:34:54 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/17 17:40:42 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	ft_open_window(t_game game)
 	get_game(&game);
 	get_all(&all, &vars, &imgs, &game);
 	draw_map(&all);
-	//mlx_key_hook(vars.win, key_hook, &all);
 	mlx_hook(vars.win, KEYPRESS, KEYPRESSMASK, key_hook, &all);
 	mlx_hook(vars.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, close_win, &all);
 	mlx_loop(vars.mlx);

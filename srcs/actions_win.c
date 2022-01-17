@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 17:34:10 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/13 23:04:05 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/17 17:28:52 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ int	close_win(t_all *all)
 
 	ft_putstr_fd("Good Bye!\n", 1);
 	i = -1;
-	while (all->game->map[++i])
-		free(all->game->map[i]);
-	free(all->game->map);
+	free_map(all->game->map);
 	mlx_loop_end(all->vars->mlx);
 	mlx_destroy_image(all->vars->mlx, all->imgs->card.img);
 	mlx_destroy_image(all->vars->mlx, all->imgs->exit_op.img);

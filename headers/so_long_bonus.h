@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:16:09 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/12 18:28:54 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/17 17:31:43 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,10 +127,10 @@ int		ft_is_valid_map(char **map);
 char	**ft_get_map(char *path);
 
 /* errors.c */
-char	**ft_put_error_path(void);
-int		ft_put_error_map(void);
-char	**ft_put_error_extension(void);
-int		ft_put_error_nb_args(void);
+void	ft_put_error_path(void);
+void	ft_put_error_map(void);
+void	ft_put_error_extension(void);
+void	ft_put_error_nb_args(void);
 
 /* window.c */
 void	ft_open_window(t_game game);
@@ -165,5 +165,8 @@ int		ennemy_animation(t_all *all);
 t_data	get_image(char *path, t_vars **vars);
 void	get_pos_perso(t_game **game);
 void	get_total_cards(t_game **game);
+
+/* free.c */
+void	free_map(char **map);
 
 #endif

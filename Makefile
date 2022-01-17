@@ -6,7 +6,7 @@
 #    By: rleseur <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/20 14:34:54 by rleseur           #+#    #+#              #
-#    Updated: 2022/01/12 18:13:35 by rleseur          ###   ########.fr        #
+#    Updated: 2022/01/17 17:35:57 by rleseur          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,29 +66,32 @@ MINILIBX_PATH	=	./librairies/minilibx/
 MINILIBX		=	${MINILIBX_PATH}libmlx.a
 
 SRCS_PATH		=	./srcs/
-SRCS			=	${SRCS_PATH}main.c		\
-					${SRCS_PATH}errors.c	\
-					${SRCS_PATH}map.c		\
-					${SRCS_PATH}valid_map.c	\
-					${SRCS_PATH}window.c	\
+SRCS			=	${SRCS_PATH}main.c			\
+					${SRCS_PATH}errors.c		\
+					${SRCS_PATH}map.c			\
+					${SRCS_PATH}valid_map.c		\
+					${SRCS_PATH}window.c		\
 					${SRCS_PATH}actions_win.c	\
-					${SRCS_PATH}draw_map.c	\
+					${SRCS_PATH}draw_map.c		\
 					${SRCS_PATH}check_if_is.c	\
-					${SRCS_PATH}moving.c	\
-					${SRCS_PATH}part_init.c
+					${SRCS_PATH}moving.c		\
+					${SRCS_PATH}part_init.c		\
+					${SRCS_PATH}free.c
+
 SRCS_B_PATH		=	./srcs_bonus/
-SRCS_B			=	${SRCS_B_PATH}main.c              \
-					${SRCS_B_PATH}errors.c    \
-					${SRCS_B_PATH}map.c               \
-					${SRCS_B_PATH}valid_map.c \
-					${SRCS_B_PATH}window.c    \
-					${SRCS_B_PATH}actions_win.c       \
-					${SRCS_B_PATH}draw_map.c  \
-					${SRCS_B_PATH}check_if_is.c       \
-					${SRCS_B_PATH}moving.c	\
-					${SRCS_B_PATH}put_params.c	\
-					${SRCS_B_PATH}ennemy_animation.c	\
-					${SRCS_B_PATH}part_init.c
+SRCS_B			=	${SRCS_B_PATH}main.c			\
+					${SRCS_B_PATH}errors.c			\
+					${SRCS_B_PATH}map.c				\
+					${SRCS_B_PATH}valid_map.c		\
+					${SRCS_B_PATH}window.c			\
+					${SRCS_B_PATH}actions_win.c		\
+					${SRCS_B_PATH}draw_map.c		\
+					${SRCS_B_PATH}check_if_is.c		\
+					${SRCS_B_PATH}moving.c			\
+					${SRCS_B_PATH}put_params.c		\
+					${SRCS_B_PATH}ennemy_animation.c\
+					${SRCS_B_PATH}part_init.c		\
+					${SRCS_B_PATH}free.c
 
 OBJS			=	${SRCS:.c=.o}
 OBJS_B			=	${SRCS_B:.c=.o}

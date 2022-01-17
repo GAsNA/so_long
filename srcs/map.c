@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:07:47 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/12 18:24:13 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/17 17:47:14 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,23 @@ static int	check_extension(char *path)
 	return (0);
 }
 
+static void	check_error(char *path)
+{
+	if (!check_extension(path))
+		ft_put_error_extension();
+	if (open(path, O_DIRECTORY))
+		ft_put_error_path();
+}
+
+static void	check_empty_map(char *map)
+{
+	if (!map[0])
+	{
+		free(map);
+		ft_put_error_map();
+	}
+}
+
 char	**ft_get_map(char *path)
 {
 	char	*map;
@@ -44,19 +61,22 @@ char	**ft_get_map(char *path)
 	char	bf;
 	char	**d_map;
 
-	if (!check_extension(path))
-		return (ft_put_error_extension());
+	check_error(path);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (ft_put_error_path());
+		ft_put_error_path();
 	map = malloc(length_map(path) * sizeof(char));
 	if (!map)
-		return (0);
+		exit (0);
 	i = -1;
 	while (read(fd, &bf, 1))
 		map[++i] = bf;
-	map[i++] = '\0';
+	if (i > 0)
+		map[i++] = '\0';
+	else
+		map[0] = '\0';
 	close(fd);
+	check_empty_map(map);
 	d_map = ft_split(map, '\n');
 	free(map);
 	return (d_map);
