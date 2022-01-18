@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:07:47 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/17 17:50:39 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/18 09:20:07 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void check_error(char *path)
 {
 	if (!check_extension(path))
 		ft_put_error_extension();
-	if (open(path, O_DIRECTORY))
+	if (open(path, O_DIRECTORY) >= 0)
 		ft_put_error_path();
 }
 
