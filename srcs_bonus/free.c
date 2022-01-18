@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:22:05 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/18 22:54:34 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/18 23:00:31 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_map(char **map)
 	free(map);
 }
 
-void    all_free(t_all *all)
+void	all_free(t_all *all)
 {
 	free_map(all->game->map);
 	mlx_loop_end(all->vars->mlx);

@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:07:47 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/18 09:20:07 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/18 23:01:26 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	check_extension(char *path)
 	return (0);
 }
 
-static void check_error(char *path)
+static void	check_error(char *path)
 {
 	if (!check_extension(path))
 		ft_put_error_extension();
@@ -44,13 +44,13 @@ static void check_error(char *path)
 		ft_put_error_path();
 }
 
-static void check_empty_map(char *map)
+static void	check_empty_map(char *map)
 {
-    if (!map[0])
-    {
-        free(map);
-        ft_put_error_map();
-    }
+	if (!map[0])
+	{
+		free(map);
+		ft_put_error_map();
+	}
 }
 
 char	**ft_get_map(char *path)
