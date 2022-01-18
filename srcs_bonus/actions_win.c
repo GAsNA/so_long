@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 17:34:10 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/17 17:34:53 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/18 22:54:59 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,7 @@
 int	close_win(t_all *all)
 {
 	ft_putstr_fd("Good Bye!\n", 1);
-	free_map(all->game->map);
-	mlx_loop_end(all->vars->mlx);
-	mlx_destroy_image(all->vars->mlx, all->imgs->card.img);
-	mlx_destroy_image(all->vars->mlx, all->imgs->exit_op.img);
-	mlx_destroy_image(all->vars->mlx, all->imgs->exit_cl.img);
-	mlx_destroy_image(all->vars->mlx, all->imgs->ground.img);
-	mlx_destroy_image(all->vars->mlx, all->imgs->wall.img);
-	mlx_destroy_image(all->vars->mlx, all->imgs->perso_b.img);
-	mlx_destroy_image(all->vars->mlx, all->imgs->perso_f.img);
-	mlx_destroy_image(all->vars->mlx, all->imgs->perso_l.img);
-	mlx_destroy_image(all->vars->mlx, all->imgs->perso_r.img);
-	mlx_destroy_image(all->vars->mlx, all->imgs->ennemy.img);
-	mlx_destroy_image(all->vars->mlx, all->imgs->ennemy2.img);
-	mlx_destroy_image(all->vars->mlx, all->imgs->ennemy3.img);
-	mlx_destroy_window(all->vars->mlx, all->vars->win);
-	mlx_destroy_display(all->vars->mlx);
-	free(all->vars->mlx);
+	all_free(all);
 	exit (EXIT_SUCCESS);
 }
 

@@ -6,16 +6,17 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 15:53:10 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/17 17:40:42 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/18 22:53:29 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-static void	get_window(t_vars *vars, int x, int y)
+static void	get_window(t_all *all, int x, int y)
 {
-	vars->mlx = mlx_init();
-	vars->win = mlx_new_window(vars->mlx, x, y, "So_long");
+	all->vars->mlx = mlx_init();
+	ft_good_size_map(*all);
+	all->vars->win = mlx_new_window(all->vars->mlx, x, y, "So_long");
 }
 
 static void	get_all_imgs(t_imgs *imgs, t_vars *vars)
@@ -54,10 +55,10 @@ void	ft_open_window(t_game game)
 	t_imgs	imgs;
 	t_all	all;
 
-	get_window(&vars, game.x_win * SIZE, game.y_win * SIZE);
+	get_all(&all, &vars, &imgs, &game);
+	get_window(&all, game.x_win * SIZE, game.y_win * SIZE);
 	get_all_imgs(&imgs, &vars);
 	get_game(&game);
-	get_all(&all, &vars, &imgs, &game);
 	draw_map(&all);
 	mlx_hook(vars.win, KEYPRESS, KEYPRESSMASK, key_hook, &all);
 	mlx_hook(vars.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, close_win, &all);

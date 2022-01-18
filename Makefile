@@ -6,7 +6,7 @@
 #    By: rleseur <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/20 14:34:54 by rleseur           #+#    #+#              #
-#    Updated: 2022/01/17 17:35:57 by rleseur          ###   ########.fr        #
+#    Updated: 2022/01/18 22:58:49 by rleseur          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,7 @@ SRCS			=	${SRCS_PATH}main.c			\
 					${SRCS_PATH}errors.c		\
 					${SRCS_PATH}map.c			\
 					${SRCS_PATH}valid_map.c		\
+					${SRCS_PATH}valid_map2.c	\
 					${SRCS_PATH}window.c		\
 					${SRCS_PATH}actions_win.c	\
 					${SRCS_PATH}draw_map.c		\
@@ -83,6 +84,7 @@ SRCS_B			=	${SRCS_B_PATH}main.c			\
 					${SRCS_B_PATH}errors.c			\
 					${SRCS_B_PATH}map.c				\
 					${SRCS_B_PATH}valid_map.c		\
+					${SRCS_B_PATH}valid_map2.c		\
 					${SRCS_B_PATH}window.c			\
 					${SRCS_B_PATH}actions_win.c		\
 					${SRCS_B_PATH}draw_map.c		\

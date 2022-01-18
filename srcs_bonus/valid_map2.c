@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   valid_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rleseur <rleseur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/21 14:26:31 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/18 22:22:45 by rleseur          ###   ########.fr       */
+/*   Created: 2022/01/18 22:15:01 by rleseur           #+#    #+#             */
+/*   Updated: 2022/01/18 22:50:18 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	main(int ac, char **av)
+void	ft_good_size_map(t_all all)
 {
-	t_game	game;
+	int	x;
+	int	y;
 
-	if (ac != 2)
-		ft_put_error_nb_args();
-	game.map = ft_get_map(av[1]);
-	ft_is_valid_map(game.map);
-	game.x_win = ft_strlen(game.map[0]);
-	game.y_win = 0;
-	while (game.map[game.y_win])
-		game.y_win++;
-	ft_open_window(game);
-	return (0);
+	mlx_get_screen_size(all.vars->mlx, &x, &y);
+	if (x < all.game->x_win * SIZE || y < all.game->y_win * SIZE)
+	{
+		free_map(all.game->map);
+		mlx_destroy_display(all.vars->mlx);
+		free(all.vars->mlx);
+		ft_put_error_map();
+	}
 }

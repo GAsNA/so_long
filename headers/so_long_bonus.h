@@ -6,7 +6,7 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:16:09 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/17 17:31:43 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/18 22:56:31 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,9 @@ typedef struct s_all
 /* valid_map.c */
 int		ft_is_valid_map(char **map);
 
+/* valid_map2.c */
+void	ft_good_size_map(t_all all);
+
 /* map.c */
 char	**ft_get_map(char *path);
 
@@ -168,5 +171,6 @@ void	get_total_cards(t_game **game);
 
 /* free.c */
 void	free_map(char **map);
+void	all_free(t_all *all);
 
 #endif
