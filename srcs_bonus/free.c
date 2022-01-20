@@ -6,11 +6,11 @@
 /*   By: rleseur <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:22:05 by rleseur           #+#    #+#             */
-/*   Updated: 2022/01/18 23:00:31 by rleseur          ###   ########.fr       */
+/*   Updated: 2022/01/20 09:00:35 by rleseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../headers/so_long_bonus.h"
 
 void	free_map(char **map)
 {
@@ -35,6 +35,9 @@ void	all_free(t_all *all)
 	mlx_destroy_image(all->vars->mlx, all->imgs->perso_f.img);
 	mlx_destroy_image(all->vars->mlx, all->imgs->perso_l.img);
 	mlx_destroy_image(all->vars->mlx, all->imgs->perso_r.img);
+	mlx_destroy_image(all->vars->mlx, all->imgs->ennemy.img);
+	mlx_destroy_image(all->vars->mlx, all->imgs->ennemy2.img);
+	mlx_destroy_image(all->vars->mlx, all->imgs->ennemy3.img);
 	mlx_destroy_window(all->vars->mlx, all->vars->win);
 	mlx_destroy_display(all->vars->mlx);
 	free(all->vars->mlx);
