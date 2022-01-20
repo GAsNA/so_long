@@ -6,7 +6,7 @@
 #    By: rleseur <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/20 14:34:54 by rleseur           #+#    #+#              #
-#    Updated: 2022/01/18 22:58:49 by rleseur          ###   ########.fr        #
+#    Updated: 2022/01/20 08:54:41 by rleseur          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,7 +118,9 @@ ${NAME}:		${OBJS} ${LIBFT} ${MINILIBX}
 				${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} -o ${NAME}
 				${CREATED_BIN}
 
-bonus:			${OBJS_B} ${LIBFT} ${MINILIBX}
+bonus:			${NAME_B}
+
+${NAME_B}:		${OBJS_B} ${LIBFT} ${MINILIBX}
 				${CC} ${CFLAGS} ${OBJS_B} ${LIBFT} ${MINILIBX} ${MLXFLAGS} -o ${NAME_B}
 				${CREATED_BIN}
 
